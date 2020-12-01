@@ -3,31 +3,27 @@ defmodule StarOneTwo do
 
   @target 2020
 
-  defp _find_pair([], _, _) do
+  defp find_pair([], _, _) do
     nil
   end
 
-  defp _find_pair(_, [], _) do
+  defp find_pair(_, [], _) do
     nil
   end
 
-  defp _find_pair(ls = [l | tls], rs = [r | trs], target) do
+  defp find_pair(ls = [l | tls], rs = [r | trs], target) do
     case compare(l + r, target) do
-      :gt -> _find_pair(ls, trs, target)
+      :gt -> find_pair(ls, trs, target)
       :eq -> l * r
-      :lt -> _find_pair(tls, rs, target)
+      :lt -> find_pair(tls, rs, target)
     end
-  end
-
-  def find_pair(input, target) do
-    xs = Enum.sort(input)
-    _find_pair(xs, Enum.reverse(xs), target)
   end
 
   def find_trip(input) do
     [x | xs] = Enum.sort(input)
+    pair = find_pair(xs, Enum.reverse(xs), @target - x)
 
-    case find_pair(xs, @target - x) do
+    case pair do
       nil -> find_trip(xs)
       y -> x * y
     end

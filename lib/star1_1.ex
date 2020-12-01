@@ -3,22 +3,22 @@ defmodule StarOneOne do
 
   @target 2020
 
-  defp go(ls = [l | tls], rs = [r | trs]) do
+  defp _find_pair(ls = [l | tls], rs = [r | trs]) do
     case compare(l + r, @target) do
-      :gt -> go(ls, trs)
+      :gt -> _find_pair(ls, trs)
       :eq -> l * r
-      :lt -> go(tls, rs)
+      :lt -> _find_pair(tls, rs)
     end
   end
 
-  def find_sum_pair(input) do
+  def find_pair(input) do
     xs = Enum.sort(input)
-    go(xs, Enum.reverse(xs))
+    _find_pair(xs, Enum.reverse(xs))
   end
 
   def run do
     input("star1_1")
     |> to_int_list()
-    |> find_sum_pair()
+    |> find_pair()
   end
 end
