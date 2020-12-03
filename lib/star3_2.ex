@@ -25,7 +25,7 @@ defmodule StarThreeTwo do
   end
 
   def run do
-    Helpers.stream_input("star3_1")
+    Inputs.stream("star3_1")
     |> Enum.map(&String.trim/1)
     |> multi_collisions()
   end

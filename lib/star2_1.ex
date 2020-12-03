@@ -1,6 +1,4 @@
 defmodule StarTwoOne do
-  import Helpers
-
   @regex ~r/^(?<min>\d+)-(?<max>\d+) (?<char>[a-z]): (?<pass>[a-z]+)/
 
   defp is_valid_password(line) do
@@ -11,7 +9,7 @@ defmodule StarTwoOne do
     caps["pass"]
     |> String.codepoints()
     |> Enum.count(fn c -> c == caps["char"] end)
-    |> is_in_range(min, max)
+    |> Comparable.is_in_range(min, max)
   end
 
   def find_valid_passwords(lines) do
@@ -21,6 +19,7 @@ defmodule StarTwoOne do
   end
 
   def run do
-    stream_input("star2_1") |> find_valid_passwords()
+    Inputs.stream("star2_1")
+    |> find_valid_passwords()
   end
 end

@@ -1,13 +1,11 @@
 defmodule StarOneTwo do
-  import Helpers
-
   @target 2020
 
   defp find_pair([], _, _), do: nil
   defp find_pair(_, [], _), do: nil
 
   defp find_pair(ls = [l | tls], rs = [r | trs], target) do
-    case compare(l + r, target) do
+    case Comparable.compare(l + r, target) do
       :gt -> find_pair(ls, trs, target)
       :eq -> l * r
       :lt -> find_pair(tls, rs, target)
@@ -25,7 +23,7 @@ defmodule StarOneTwo do
   end
 
   def run do
-    int_stream_input("star1_1")
+    Inputs.int_stream("star1_1")
     |> find_trip()
   end
 end

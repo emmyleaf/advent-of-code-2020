@@ -1,6 +1,4 @@
 defmodule StarTwoTwo do
-  import Helpers
-
   @regex ~r/^(?<pos1>\d+)-(?<pos2>\d+) (?<char>[a-z]): (?<pass>[a-z]+)/
 
   defp is_valid_password(line) do
@@ -21,6 +19,7 @@ defmodule StarTwoTwo do
   end
 
   def run do
-    stream_input("star2_1") |> find_valid_passwords()
+    Inputs.stream("star2_1")
+    |> find_valid_passwords()
   end
 end

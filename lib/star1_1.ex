@@ -1,10 +1,8 @@
 defmodule StarOneOne do
-  import Helpers
-
   @target 2020
 
   defp _find_pair(ls = [l | tls], rs = [r | trs]) do
-    case compare(l + r, @target) do
+    case Comparable.compare(l + r, @target) do
       :gt -> _find_pair(ls, trs)
       :eq -> l * r
       :lt -> _find_pair(tls, rs)
@@ -17,7 +15,7 @@ defmodule StarOneOne do
   end
 
   def run do
-    int_stream_input("star1_1")
+    Inputs.int_stream("star1_1")
     |> find_pair()
   end
 end
