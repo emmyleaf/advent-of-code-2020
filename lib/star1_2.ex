@@ -3,13 +3,8 @@ defmodule StarOneTwo do
 
   @target 2020
 
-  defp find_pair([], _, _) do
-    nil
-  end
-
-  defp find_pair(_, [], _) do
-    nil
-  end
+  defp find_pair([], _, _), do: nil
+  defp find_pair(_, [], _), do: nil
 
   defp find_pair(ls = [l | tls], rs = [r | trs], target) do
     case compare(l + r, target) do
@@ -30,8 +25,7 @@ defmodule StarOneTwo do
   end
 
   def run do
-    input("star1_1")
-    |> to_int_list()
+    int_stream_input("star1_1")
     |> find_trip()
   end
 end

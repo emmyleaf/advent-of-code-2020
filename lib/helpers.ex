@@ -1,16 +1,12 @@
 defmodule Helpers do
-  def input(star) do
-    Path.join("inputs", star) |> File.read!()
-  end
-
   def stream_input(star) do
     Path.join("inputs", star) |> File.stream!()
   end
 
-  def to_int_list(input) do
-    String.trim(input)
-    |> String.split("\n")
-    |> Enum.map(&String.to_integer/1)
+  def int_stream_input(star) do
+    stream_input(star)
+    |> Stream.map(&String.trim/1)
+    |> Stream.map(&String.to_integer/1)
   end
 
   def compare(a, b) do

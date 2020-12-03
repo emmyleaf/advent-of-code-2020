@@ -17,8 +17,7 @@ defmodule StarOneOne do
   end
 
   def run do
-    input("star1_1")
-    |> to_int_list()
+    int_stream_input("star1_1")
     |> find_pair()
   end
 end
