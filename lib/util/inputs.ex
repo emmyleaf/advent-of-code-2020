@@ -1,4 +1,9 @@
 defmodule Inputs do
+  @spec string(binary) :: binary
+  def string(star) do
+    Path.join("inputs", star) |> File.read!()
+  end
+
   @spec lines(binary) :: File.Stream.t(binary)
   def lines(star) do
     Path.join("inputs", star) |> File.stream!()
