@@ -14,8 +14,8 @@ defmodule Inputs do
     lines(star) |> Stream.map(&String.trim/1)
   end
 
-  @spec ints(binary) :: Stream.t(integer)
+  @spec ints(binary) :: list(integer)
   def ints(star) do
-    trimmed_lines(star) |> Stream.map(&String.to_integer/1)
+    trimmed_lines(star) |> Enum.map(&String.to_integer/1)
   end
 end
