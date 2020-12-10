@@ -41,15 +41,16 @@ defmodule Star10Test do
     assert Star10.silver(@example_input2) == 220
   end
 
-  # test "Examples - Gold" do
-  #   assert Star10.find_contiguous_sum(@example_input, 127) == [40, 47, 25, 15]
-  # end
+  test "Examples - Gold" do
+    assert Star10.gold(@example_input1) == 8
+    assert Star10.gold(@example_input2) == 19208
+  end
 
   test "Final Answer - Silver" do
     assert Star10.silver(Inputs.ints("star10")) == 2080
   end
 
-  # test "Final Answer - Gold" do
-  #   assert Star10.gold(Inputs.ints("star10")) == 0
-  # end
+  test "Final Answer - Gold" do
+    assert Star10.gold(Inputs.ints("star10")) == 6_908_379_398_144
+  end
 end
